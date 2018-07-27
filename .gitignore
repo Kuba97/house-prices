@@ -102,3 +102,14 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+#data folder
+data/
+submissions/
+regression/.idea/vcs.xml
+regression/.idea/other.xml
+regression/.idea/modules.xml
+regression/.idea/models.iml
+regression/.idea/misc.xml
+regression/.idea/dictionaries/Kuba.xml
+regression/.idea/workspace.xml
