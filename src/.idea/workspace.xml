@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f422d695-7146-4b7d-9ebc-ba2ff6805b28" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notebooks/data_exploration.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notebooks/data_loader.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../notebooks/data_preparation.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../regression/data.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../regression/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../regression/models/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../regression/models/lasso_regression.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../regression/models/linear_model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../regression/models/ridge_regression.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../regression/submission_utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../regression/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notebooks/1.1 EDA - Variable types and missing values.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../notebooks/1.1 EDA - Variable types and missing values.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notebooks/1.2.1 EDA - Statistical Analysis (numerical).ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../notebooks/1.2.1 EDA - Statistical Analysis (numerical).ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../notebooks/1.2.2 EDA - Statistical Analysis (categorical).ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../notebooks/1.2.2 EDA - Statistical Analysis (categorical).ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,11 +20,12 @@
     <session id="-1235422572">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.10" value="1" />
-          <entry key="project.open.time.13" value="1" />
+          <entry key="project.closed" value="6" />
+          <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.13" value="2" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.9" value="2" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -88,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/features/prepare_data.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="168">
-              <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+              <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
               <folding>
                 <marker date="1533473671344" expanded="true" signature="926:929" ph="..." />
               </folding>
@@ -143,6 +135,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
@@ -208,9 +201,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHubDesktop/app-1.3.2/resources/app/git/cmd/git.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -268,8 +262,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18869936" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19509594" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -404,20 +399,8 @@
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pandas-0.23.0-py3.6-win-amd64.egg/pandas/core/internals.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="4842" selection-start-line="4842" selection-end-line="4842" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pandas-0.23.0-py3.6-win-amd64.egg/pandas/core/indexing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="1326" selection-start-line="1326" selection-end-line="1326" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pandas-0.23.0-py3.6-win-amd64.egg/pandas/core/internals.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/pandas-0.23.0-py3.6-win-amd64.egg/pandas/core/indexing.py" />
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36/Lib/site-packages/numpy/core/_methods.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="764">
@@ -479,7 +462,7 @@
     <entry file="file://$PROJECT_DIR$/features/prepare_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
-          <caret line="42" column="13" lean-forward="true" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
+          <caret line="42" column="13" selection-start-line="42" selection-start-column="13" selection-end-line="42" selection-end-column="13" />
           <folding>
             <marker date="1533473671344" expanded="true" signature="926:929" ph="..." />
           </folding>
