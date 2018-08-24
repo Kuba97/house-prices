@@ -1,4 +1,4 @@
-from data.make_dataset import Data
+from data_io.make_dataset import Data
 from models.validation import run_validation
 from features_info import ID_COL, TARGET_COL
 
