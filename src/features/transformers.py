@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from sklearn.base import TransformerMixin, BaseEstimator
 
@@ -48,23 +49,41 @@ class TypeSelector(TransformerMixin, BaseEstimator):
         return {'dtype': self.dtype}
 
 
-class SimpleImputer(TransformerMixin, BaseEstimator):
-    def __init__(self, features=None, value=None):
+class Imputer(TransformerMixin, BaseEstimator):
+    CONST_METHOD = 'const'
+    MEAN_METHOD = 'mean'
+    MEDIAN_METHOD = 'median'
+    MODE_METHOD = 'mode'
+
+    def __init__(self, features, method='const', value=None):
         self.features = features
-        self.value = value
+        self.method = method
+        self.impute_values = [value] * len(features)
+        self.simple_value = value
 
     def fit(self, X, y=None):
-        self.features = [feat for feat in self.features if feat in X.columns]
+        self.features = [feat for feat in self.features if feat in X.columns.tolist()]
+        self.impute_values = (self._compute_fill_values(X)).iloc[0]
         return self
 
     def transform(self, y):
-        if self.features or self.value is not None:
-            for feature in self.features:
-                y[feature].fillna(self.value, inplace=True)
-        return y
+        return y.fillna(self.impute_values)
 
     def get_params(self, deep=True):
-        return {'features': self.features, 'value': self.value}
+        return {'features': self.features, 'method': self.method, 'value': self.simple_value}
+
+    def _compute_fill_values(self, X):
+        if self.method == Imputer.CONST_METHOD:
+            impute_values = pd.DataFrame([self.simple_value] * len(self.features), index=self.features).transpose()
+        elif self.method == Imputer.MEAN_METHOD:
+            impute_values = X[self.features].mean(axis=0)
+        elif self.method == Imputer.MEDIAN_METHOD:
+            impute_values = X[self.features].median(axis=1)
+        elif self.method == Imputer.MODE_METHOD:
+            impute_values = X[self.features].mode(axis=0)
+        else:
+            raise ValueError(self.method + ' not in available imputing methods')
+        return impute_values
 
 
 class DummyEncoder(TransformerMixin, BaseEstimator):
@@ -104,3 +123,14 @@ class FeatureTransformer(TransformerMixin, BaseEstimator):
 
     def get_params(self, deep=True):
         return {'feats_to_transform': self.feats_to_transform, 'func': self.func}
+
+
+class LogTransform(TransformerMixin, BaseEstimator):
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, y):
+        return np.log(y)
+
+    def inverse_transform(self, y):
+        return np.exp(y)

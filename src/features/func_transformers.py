@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 
 def log_transform(df, feats_to_log):
@@ -21,4 +22,10 @@ def is_antique(df, antique_bound):
 def to_categorical(df, feats_to_cat):
     for feat in feats_to_cat:
         df[feat] = df[feat].astype('str')
+    return df
+
+
+def bucket(df, features, n):
+    for i, feat in enumerate(features):
+        df[feat] = pd.qcut(x=df[feat], q=n[i]).astype('object')
     return df

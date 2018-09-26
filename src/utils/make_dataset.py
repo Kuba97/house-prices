@@ -18,7 +18,3 @@ def load_split_dataset(dataset_type, filename, target_col=None, id_col=None):
     id_ = dataset[id_col]
     return x, y, id_
 
-
-class Data:
-    def __init__(self, dataset_type, filename, target_col=None, id_col=None):
-        self.x, self.y, self.id_ = load_split_dataset(dataset_type, filename, target_col, id_col)

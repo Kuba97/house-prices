@@ -1,6 +1,6 @@
 import os
 import datetime
-from data_io.io_utils import pickle_file, PATH_UP
+from utils.io_utils import pickle_file, PATH_UP
 
 REPORTS_FOLDER_NAME = 'reports'
 FILENAME_DATE = "%Y-%m-%d"
@@ -10,7 +10,7 @@ FILENAME_SEPARATOR = '_'
 
 
 def train_store_predictions(validator, x_train, y_train):
-    validator.train(x_train, y_train)
+    validator.fit(x_train, y_train)
     predicted = validator.predict(x_train)
     filename = PREDICTIONS_BASENAME + FILENAME_SEPARATOR + validator.get_model_name()
     save_report_file(predicted, filename)
