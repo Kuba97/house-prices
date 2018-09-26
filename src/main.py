@@ -7,16 +7,16 @@ from models.preprocessor import make_pipeline_with_estimator
 from utils.submission import make_submission
 
 
-def validate(x_train, y_train, regressor):
+def validate(regressor, **selection_kwargs):
     estimator = pool.xgboost
     model = make_pipeline_with_estimator(estimator)
     param_grid = {}  # fill with parameters to search within given values
-    regressor.select_model(x_train, y_train, model, param_grid, True)
+    regressor.select_model(model=model, param_grid=param_grid, **selection_kwargs)
 
 
 if __name__ == '__main__':
     x, y, _ = load_split_dataset('raw', 'train.csv', TARGET_COL, ID_COL)
     regressor = Regressor.as_validator(LogTransform())
-    validate(x, y, regressor)
-    x, _, id_ = load_split_dataset('raw', 'test.csv', id_col=ID_COL)
-    make_submission(regressor, regressor.predict(x, id_))
+    validate(regressor, x_train=x, y_train=y, set_best_estimator=False)
+    # x, _, id_ = load_split_dataset('raw', 'test.csv', id_col=ID_COL)
+    # make_submission(regressor, regressor.predict(x, id_))

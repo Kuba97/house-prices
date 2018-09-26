@@ -7,9 +7,9 @@ from features.features_info import NUMERIC_FEATS, CATEGORIC_FEATS
 
 NUMBER_TYPE_NAME = 'number'
 OBJECT_TYPENAME = 'object'
-FEATS_TO_DROP = ['PoolQC', 'TotalBsmtSF', 'GarageArea', 'MoSold', 'YrSold', 'MiscVal', 'GarageYrBlt', 'LowQualFinSF',
-                 'BsmtFinSF2', '3SsnPorch', 'LotFrontage', 'BsmtHalfBath', 'Condition2', 'GarageCond', 'BsmtFinType2']
-FEATS_TO_LOG = ['1stFlrSF', 'GrLivArea', 'LotArea', 'BsmtFinSF1', 'MasVnrArea', 'OpenPorchSF']
+FEATS_TO_DROP = ['PoolQC', 'TotalBsmtSF', 'GarageArea', 'MiscVal', 'MoSold', 'YrSold', 'GarageYrBlt', 'LowQualFinSF',
+                 'BsmtFinSF2', '3SsnPorch', 'BsmtHalfBath', 'Condition2', 'GarageCond', 'BsmtFinType2']
+FEATS_TO_LOG = ['1stFlrSF', 'GrLivArea', 'LotArea', 'MasVnrArea', 'OpenPorchSF']
 FEATS_TO_CAT = ['GarageCars', 'Fireplaces', 'MSSubClass', 'BedroomAbvGr']
 VAL_IMPUTE_NUM = 0
 VAL_IMPUTE_CAT = 'n/a'
@@ -18,7 +18,6 @@ MODE_IMPUTE_CAT_FEATS = ['Street', 'LandContour', 'Utilities', 'LandSlope', 'Con
                          'MiscFeature', 'SaleCondtition']
 MEDIAN_IMPUTE_NUM_FEATS = ['LotFrontage', 'OverallQual', 'OverallCond']
 ANTIQUE_BOUND = 1930
-
 
 PREPROCESSOR = Pipeline(steps=[
     ('drop_features', trans.FeatureSelector(FEATS_TO_DROP)),
@@ -29,7 +28,7 @@ PREPROCESSOR = Pipeline(steps=[
             ('selector', trans.TypeSelector(NUMBER_TYPE_NAME)),
             ('basic_imputer', trans.Imputer(NUMERIC_FEATS, trans.Imputer.CONST_METHOD, VAL_IMPUTE_NUM)),
             ('log_transform', trans.FunctionTransformer(f_trans.log_transform, feats_to_log=FEATS_TO_LOG)),
-            # ('standardize', StandardScaler()),
+            ('standardize', StandardScaler()),
         ])),
         ('categorical', Pipeline(steps=[
             ('selector', trans.TypeSelector(OBJECT_TYPENAME)),

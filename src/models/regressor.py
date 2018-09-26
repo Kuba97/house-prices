@@ -1,7 +1,6 @@
 import pandas as pd
 
-from utils.make_dataset import load_split_dataset
-from features.features_info import ID_COL, TARGET_COL
+from features.features_info import TARGET_COL
 from .model_selection.select import grid_search_cv, cv_score
 from utils.io_utils import pickle_file, MODEL_FOLDER
 

@@ -125,6 +125,24 @@ class FeatureTransformer(TransformerMixin, BaseEstimator):
         return {'feats_to_transform': self.feats_to_transform, 'func': self.func}
 
 
+class FeatureBucketizer(TransformerMixin, BaseEstimator):
+    def __init__(self, feature_name, q_num):
+        self.feature_name = feature_name
+        self.q_num = q_num
+
+    def fit(self, X, y=None):
+        _, self.bins = pd.qcut(X[self.feature_name], self.q_num, retbins=True)
+        return self
+
+    def transform(self, y):
+        y[self.feature_name] = pd.cut(y[self.feature_name], self.bins)
+        return y
+
+    def fit_transform(self, X, y=None, **fit_params):
+        X[self.feature_name], self.bins = pd.qcut(X[self.feature_name], self.q_num, retbins=True)
+        return X
+
+
 class LogTransform(TransformerMixin, BaseEstimator):
     def fit(self, X, y=None):
         return self

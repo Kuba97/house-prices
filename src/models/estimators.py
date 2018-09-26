@@ -1,8 +1,10 @@
-from sklearn.linear_model import ElasticNet, LinearRegression
+from sklearn.linear_model import Ridge, ElasticNet, LinearRegression
 from xgboost.sklearn import XGBRegressor
 from lightgbm.sklearn import LGBMRegressor
 from mlens.ensemble import SuperLearner
 
+
+ridge = Ridge(alpha=10)
 elastic_net = ElasticNet(alpha=0.001, l1_ratio=.5, max_iter=256)
 xgboost = XGBRegressor(max_depth=3,
                        n_estimators=1024,

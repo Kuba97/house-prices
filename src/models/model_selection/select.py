@@ -8,7 +8,7 @@ CV_FOLDS = 5
 
 
 def grid_search_cv(model, x_train, y_train, param_grid, cv_folds=CV_FOLDS):
-    gs_model = GridSearchCV(model, param_grid, scoring=RMSE_SCORER, cv=cv_folds, n_jobs=4, verbose=0)
+    gs_model = GridSearchCV(model, param_grid, scoring=RMSE_SCORER, cv=cv_folds, n_jobs=1, verbose=0)
     gs_model.fit(x_train, y_train)
     print('Best score: ', gs_model.best_score_)
     print('Best params: \n', gs_model.best_params_)
