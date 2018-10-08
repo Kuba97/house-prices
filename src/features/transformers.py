@@ -148,7 +148,7 @@ class LogTransform(TransformerMixin, BaseEstimator):
         return self
 
     def transform(self, y):
-        return np.log(y)
+        return (np.log(y)).values
 
     def inverse_transform(self, y):
         return np.exp(y)

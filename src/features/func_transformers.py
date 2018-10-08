@@ -23,3 +23,7 @@ def to_categorical(df, feats_to_cat):
     for feat in feats_to_cat:
         df[feat] = df[feat].astype('str')
     return df
+
+
+def to_matrix(df):
+    return df.values

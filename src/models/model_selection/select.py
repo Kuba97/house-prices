@@ -1,10 +1,20 @@
 import numpy as np
 from sklearn.model_selection import cross_val_score, GridSearchCV
-
 from models.model_selection.utils import RMSE_SCORER
 
+import models.estimators as pool
+from models.preprocessing import make_pipeline_with_estimator, BASIC_PREPROCESSOR, PREPROCESSOR
 
 CV_FOLDS = 5
+
+
+def validate(x_train, y_train):
+    estimator = pool.xgboost
+    model = make_pipeline_with_estimator(estimator, PREPROCESSOR)
+
+    param_grid = {}
+    grid_search_cv(model, x_train, y_train, param_grid)
+    cv_score(model, x_train, y_train)
 
 
 def grid_search_cv(model, x_train, y_train, param_grid, cv_folds=CV_FOLDS):
