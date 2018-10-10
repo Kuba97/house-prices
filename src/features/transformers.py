@@ -143,6 +143,7 @@ class FeatureBucketizer(TransformerMixin, BaseEstimator):
         return X
 
 
+
 class LogTransform(TransformerMixin, BaseEstimator):
     def fit(self, X, y=None):
         return self

@@ -15,7 +15,7 @@ VAL_IMPUTE_NUM = 0
 VAL_IMPUTE_CAT = 'n/a'
 MODE_IMPUTE_CAT_FEATS = ['Street', 'LandContour', 'Utilities', 'LandSlope', 'Condition1', 'Condition2', 'BldgType',
                          'RoofMatl', 'ExterCond', 'Heating', 'CentralAir', 'Electrical', 'Alley', 'Functional',
-                         'MiscFeature', 'SaleCondtition']
+                         'SaleCondtition']
 MEDIAN_IMPUTE_NUM_FEATS = ['LotFrontage', 'OverallQual', 'OverallCond']
 ANTIQUE_BOUND = 1930
 
@@ -23,8 +23,8 @@ BASIC_PREPROCESSOR_STEPS = [
     ('basic_imputer_num', trans.Imputer(NUMERIC_FEATS, trans.Imputer.CONST_METHOD, VAL_IMPUTE_NUM)),
     ('basic_imputer_cat', trans.Imputer(CATEGORIC_FEATS, trans.Imputer.CONST_METHOD, VAL_IMPUTE_CAT)),
     ('encode_nominal', trans.DummyEncoder()),
-    ('standard_scaler', StandardScaler(copy=True, with_mean=True, with_std=False)),
-    # ('to_matrix', trans.FunctionTransformer(f_trans.to_matrix))
+    # ('standard_scaler', StandardScaler(copy=True, with_mean=True, with_std=False)),
+    ('to_matrix', trans.FunctionTransformer(f_trans.to_matrix))
 ]
 
 STEPS_NONAME = [trans.DummyEncoder(), trans.FunctionTransformer(f_trans.to_matrix)]
@@ -32,12 +32,13 @@ PREPROCESSOR_STEPS = [
     ('drop_features', trans.FeatureSelector(FEATS_TO_DROP)),
     ('is_antique', trans.FunctionTransformer(f_trans.is_antique, antique_bound=ANTIQUE_BOUND)),
     ('discretizer', trans.FunctionTransformer(f_trans.to_categorical, feats_to_cat=FEATS_TO_CAT)),
+    # ('neighborhood_collapser', trans.FunctionTransformer(f_trans.collapse_groups)),
     ('feat_union', FeatureUnion(n_jobs=1, transformer_list=[
         ('numeric', Pipeline(steps=[
             ('selector', trans.TypeSelector(NUMBER_TYPE_NAME)),
             ('basic_imputer', trans.Imputer(NUMERIC_FEATS, trans.Imputer.CONST_METHOD, VAL_IMPUTE_NUM)),
             ('log_transform', trans.FunctionTransformer(f_trans.log_transform, feats_to_log=FEATS_TO_LOG)),
-            ('standardize', StandardScaler())
+            # ('standardize', StandardScaler())
         ])),
         ('categorical', Pipeline(steps=[
             ('selector', trans.TypeSelector(OBJECT_TYPENAME)),

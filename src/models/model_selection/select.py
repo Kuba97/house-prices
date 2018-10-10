@@ -9,16 +9,22 @@ CV_FOLDS = 5
 
 
 def validate(x_train, y_train):
-    estimator = pool.xgboost
+    estimator = pool.default_xgboost
     model = make_pipeline_with_estimator(estimator, PREPROCESSOR)
 
-    param_grid = {}
+    param_grid = {
+        'XGBRegressor__max_depth': [2, 3, 4, 5],
+        'XGBRegressor__learning_rate': [.01, .1],
+        'XGBRegressor__n_estimators': [256, 512, 1024]
+        # 'xgbregressor__':[],
+        # 'xgbregressor__':[]
+    }
     grid_search_cv(model, x_train, y_train, param_grid)
-    cv_score(model, x_train, y_train)
+    # cv_score(model, x_train, y_train)
 
 
 def grid_search_cv(model, x_train, y_train, param_grid, cv_folds=CV_FOLDS):
-    gs_model = GridSearchCV(model, param_grid, scoring=RMSE_SCORER, cv=cv_folds, n_jobs=1, verbose=0)
+    gs_model = GridSearchCV(model, param_grid, scoring=RMSE_SCORER, cv=cv_folds, n_jobs=4, verbose=0)
     gs_model.fit(x_train, y_train)
     print('Best score: ', gs_model.best_score_)
     print('Best params: \n', gs_model.best_params_)

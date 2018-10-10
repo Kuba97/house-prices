@@ -27,3 +27,12 @@ def to_categorical(df, feats_to_cat):
 
 def to_matrix(df):
     return df.values
+
+
+def collapse_groups(df):
+    group_dict = {'Blmngtn': 'f', 'Blueste': 'c', 'BrDale': 'a', 'BrkSide': 'a', 'ClearCr': 'f', 'CollgCr': 'f',
+                  'Crawfor': 'f', 'Edwards': 'b', 'Gilbert': 'e', 'IDOTRR': 'a', 'MeadowV': 'a', 'Mitchel': 'd',
+                  'NAmes': 'd', 'NPkVill': 'd', 'NWAmes': 'e', 'NridgHt': 'h', 'OldTown': 'b', 'SWISU': 'c',
+                  'Sawyer': 'c', 'SawyerW': 'd', 'Somerst': 'g', 'StoneBr': 'h', 'Timber': 'h', 'Veenker': 'g'}
+    df['Neighborhood'] = df['Neighborhood'].map(group_dict)
+    return df
