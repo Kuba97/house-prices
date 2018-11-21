@@ -5,6 +5,18 @@ from mlens.ensemble import SuperLearner
 
 default_xgboost = XGBRegressor()
 
+randomized_prep_xgboost = XGBRegressor(max_depth=8,
+                                             n_estimators=2048,
+                                             learning_rate=0.014,
+                                             colsample_bytree=0.8,
+                                             colsample_bylevel=0.2,
+                                             reg_alpha=0.2,
+                                             reg_lambda=1.2,
+                                             subsample=0.3,
+                                             gamma=.01,
+                                             missing=None,
+                                             n_jobs=1)
+
 ridge = Ridge(alpha=10)
 elastic_net = ElasticNet(alpha=0.001, l1_ratio=.5, max_iter=256)
 xgboost = XGBRegressor(max_depth=3,
@@ -35,9 +47,3 @@ def get_super_learner():
 
 super_learner = get_super_learner()
 
-bayesian_xgb = XGBRegressor(base_score=0.5, booster='gbtree', colsample_bylevel=1,
-                            colsample_bytree=1, gamma=0, learning_rate=0.1, max_delta_step=0,
-                            max_depth=3, min_child_weight=1, missing=None, n_estimators=100,
-                            n_jobs=1, objective='reg:linear', random_state=0,
-                            reg_alpha=0, reg_lambda=1, scale_pos_weight=1,
-                            silent=True, subsample=1)
